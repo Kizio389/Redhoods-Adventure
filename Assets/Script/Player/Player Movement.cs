@@ -39,7 +39,11 @@ public class PlayerMovement : MonoBehaviour
     [Header("Animation")]
     private Animator _Animator;
 
-
+    DataPlayer dataPlayer;
+    private void Awake()
+    {
+        dataPlayer = DataPlayer.Instance;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -106,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Time.time >= nextAttackSplashTime)
             {
-                if (_PlayerController.Current_playerConfig.MaxMp > 0)
+                if (dataPlayer.Health > 0)
                 {
                     imageSkillSplash.fillAmount = 0;
                     nextAttackSplashTime = Time.time + 1f / AttackSplash_Rate;
@@ -114,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    _PlayerController.Current_playerConfig.MaxMp = 0;
+                    dataPlayer.Health = 0;
                 }
             }
             else return;

@@ -49,21 +49,22 @@ public class PlayerController : MonoBehaviour
 
     Vector3 PositionLocal;
 
-    [SerializeField] public PlayerConfig Default_playerConfig;
-    [SerializeField] public PlayerConfig Current_playerConfig;
-    [SerializeField] private InventoryItem item;
+    DataPlayer dataPlayer;
+
+   [SerializeField] private InventoryItem item;
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _Animator = GetComponent<Animator>();
+        dataPlayer = DataPlayer.Instance;
     }
 
     private void Start()
     {
         PositionLocal = transform.position;
-        Point_Coin.text = Current_playerConfig.Coin.ToString();
-        Hearth_Bar.fillAmount = Current_playerConfig.MaxHp / Default_playerConfig.MaxHp;
-        Mana_Bar.fillAmount = Current_playerConfig.MaxMp / Default_playerConfig.MaxMp;
+        Point_Coin.text = dataPlayer.Coin.ToString();
+        Hearth_Bar.fillAmount = dataPlayer.Health / dataPlayer.Max_Health;
+        Mana_Bar.fillAmount = dataPlayer.Energy / dataPlayer.Max_Energy;
     }
 
     private void Update()
@@ -142,11 +143,11 @@ public class PlayerController : MonoBehaviour
                 if (enemy.CompareTag("Enemy"))
                 {
                     enemy.GetComponent<Rigidbody2D>().AddForce(pushDirection * pushForce, ForceMode2D.Impulse);
-                    enemy.GetComponent<EnemiesController>().EnemyTakeDamge(Default_playerConfig.DamgeAd);
+                    enemy.GetComponent<EnemiesController>().EnemyTakeDamge(dataPlayer.AD_Damage);
                 }
                 else if (enemy.CompareTag("Boss"))
                 {
-                    enemy.GetComponent<BossHealth>().TakeDamage((int)Default_playerConfig.DamgeAd);
+                    enemy.GetComponent<BossHealth>().TakeDamage((int)dataPlayer.AD_Damage);
                 }
             }
         }
@@ -165,28 +166,28 @@ public class PlayerController : MonoBehaviour
                 //_rigidbody2D.AddForce(new Vector2(-Splash_force, 0));
                 _rigidbody2D.velocity = new Vector2(-Splash_force, 0);
             }
-            Current_playerConfig.MaxMp -= 10;
-            Mana_Bar.fillAmount = Current_playerConfig.MaxMp / Default_playerConfig.MaxMp;
+            dataPlayer.Energy -= 10;
+            Mana_Bar.fillAmount = dataPlayer.Energy / dataPlayer.Max_Energy;
             _Animator.SetTrigger("Skill_Attack");
     }
 
     public void Shoot_Magic()
     {
-        if (Current_playerConfig.MaxMp > 0)
+        if (dataPlayer.Energy > 0)
         {
             _ShootSound.Play();
             StartCoroutine("ShootMagic");
         }
         else
         {
-            Current_playerConfig.MaxMp = 0;
+            dataPlayer.Energy = 0;
         }
     }
     public IEnumerator ShootMagic()
     {
-        Current_playerConfig.MaxMp -= 10;
-        Debug.Log(Current_playerConfig.MaxMp);
-        Mana_Bar.fillAmount = Current_playerConfig.MaxMp / Default_playerConfig.MaxMp;
+        dataPlayer.Energy -= 10;
+        Debug.Log(dataPlayer.Energy);
+        Mana_Bar.fillAmount = dataPlayer.Energy / dataPlayer.Max_Energy;
         Instantiate(Skill_magic, Magic_pos.position, Quaternion.identity);
         yield return null;
     }
@@ -196,9 +197,9 @@ public class PlayerController : MonoBehaviour
         if(_Animator.GetBool("Dead") == false)
         {
             _Animator.SetTrigger("Hurt");
-            Current_playerConfig.MaxHp -= _damge;
-            Hearth_Bar.fillAmount = Current_playerConfig.MaxHp / Default_playerConfig.MaxHp;
-            if (Current_playerConfig.MaxHp <= 0)
+            dataPlayer.Health -= _damge;
+            Hearth_Bar.fillAmount = dataPlayer.Health / dataPlayer.Max_Health;
+            if (dataPlayer.Health <= 0)
             {
                 _Animator.SetBool("Dead", true);
                 PlayerDie();
@@ -222,7 +223,7 @@ public class PlayerController : MonoBehaviour
 
     void PlayerDie()
     {
-        Current_playerConfig.MaxHp = 0;
+        dataPlayer.Health = 0;
         PanelDead.SetActive(true);
         GetComponent<PlayerMovement>().enabled = false;
         StartCoroutine(RespawnPlayer());
@@ -241,10 +242,10 @@ public class PlayerController : MonoBehaviour
                 _Animator.SetBool("Dead", false);
                 PanelDead.SetActive(false);
                 GetComponent<PlayerMovement>().enabled = true;
-                Current_playerConfig.MaxHp = Default_playerConfig.MaxHp;
-                Current_playerConfig.MaxMp = Default_playerConfig.MaxMp;
-                Hearth_Bar.fillAmount = Current_playerConfig.MaxHp / Default_playerConfig.MaxHp;
-                Mana_Bar.fillAmount = Current_playerConfig.MaxMp / Default_playerConfig.MaxMp;
+                dataPlayer.Health = dataPlayer.Max_Health;
+                dataPlayer.Energy = dataPlayer.Max_Energy;
+                Hearth_Bar.fillAmount = dataPlayer.Health / dataPlayer.Max_Health;
+                Mana_Bar.fillAmount = dataPlayer.Energy / dataPlayer.Max_Energy;
                 gameObject.transform.position = PositionLocal;
             }
         }
@@ -257,50 +258,50 @@ public class PlayerController : MonoBehaviour
 
     public void SetCoin()
     {
-        Current_playerConfig.Coin++;
-        Point_Coin.text = Current_playerConfig.Coin.ToString();
+        dataPlayer.Coin++;
+        Point_Coin.text = dataPlayer.Coin.ToString();
     }
 
     public void Healing(float index, string name)
     {
         if(name == "HP")
         {
-            Current_playerConfig.MaxHp += index;
-            Hearth_Bar.fillAmount = Current_playerConfig.MaxHp / Default_playerConfig.MaxHp;
+            dataPlayer.Health += index;
+            Hearth_Bar.fillAmount = dataPlayer.Health / dataPlayer.Max_Health;
         } 
         else if(name == "MP")
         {
-            Current_playerConfig.MaxMp += index;
-            Mana_Bar.fillAmount = Current_playerConfig.MaxMp / Default_playerConfig.MaxMp;
+            dataPlayer.Energy += index;
+            Mana_Bar.fillAmount = dataPlayer.Energy / dataPlayer.Max_Energy;
         }
     }
 
     public void LevelUp(int index)
     {
-        Current_playerConfig.Exp += index;
-        if(Current_playerConfig.Exp >= Default_playerConfig.MaxExp)
+        dataPlayer.EXP += index;
+        if(dataPlayer.EXP >= dataPlayer.Max_EXP)
         {
-            Default_playerConfig.Level++;
-            Default_playerConfig.PointSkill++;
+            dataPlayer.Level++;
+            dataPlayer.SkillPoint++;
             SetEXP();
-            Current_playerConfig.MaxHp = Default_playerConfig.MaxHp;
-            Hearth_Bar.fillAmount = Current_playerConfig.MaxHp / Default_playerConfig.MaxHp;
-            Current_playerConfig.MaxMp = Default_playerConfig.MaxMp;
-            Mana_Bar.fillAmount = Current_playerConfig.MaxMp / Default_playerConfig.MaxMp;
+            dataPlayer.Health = dataPlayer.Max_Health;
+            Hearth_Bar.fillAmount = dataPlayer.Health / dataPlayer.Max_Health;
+            dataPlayer.Energy = dataPlayer.Max_Energy;
+            Mana_Bar.fillAmount = dataPlayer.Energy / dataPlayer.Max_Energy;
 
         }
     }
     public void SetEXP()
     {
         int temp;
-        temp = Current_playerConfig.Exp - Default_playerConfig.MaxExp;
-        Current_playerConfig.Exp = temp;
-        Default_playerConfig.MaxExp += (Default_playerConfig.MaxExp * 30 / 100);
+        temp = dataPlayer.EXP - dataPlayer.Max_EXP;
+        dataPlayer.EXP = temp;
+        dataPlayer.Max_EXP += (dataPlayer.Max_EXP * 30 / 100);
     }
 
     internal void Skill_Thunder()
     {
-        if (Current_playerConfig.MaxMp > 0)
+        if (dataPlayer.Energy > 0)
         {
             Collider2D[] hit_Enemies = Physics2D.OverlapCircleAll(_AttackPoint.position, _AttackSkillThunderRange, _EnemiesLayer);
             foreach (Collider2D enemy in hit_Enemies)
@@ -308,14 +309,14 @@ public class PlayerController : MonoBehaviour
                 if (enemy != null)
                 {
                     Instantiate(ThunderSkill, enemy.transform.position, Quaternion.identity);
-                    Current_playerConfig.MaxMp -= 10;
-                    Mana_Bar.fillAmount = Current_playerConfig.MaxMp / Default_playerConfig.MaxMp;
+                    dataPlayer.Energy -= 10;
+                    Mana_Bar.fillAmount = dataPlayer.Energy / dataPlayer.Max_Energy;
                 }
             }
         }
         else
         {
-            Current_playerConfig.MaxMp = 0;
+            dataPlayer.Energy = 0;
         }
         
     }

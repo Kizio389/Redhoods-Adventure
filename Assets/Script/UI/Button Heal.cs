@@ -16,7 +16,11 @@ public class ButtonHeal : MonoBehaviour
 
     private int totalHpBottleCount = 0;
     private int totalMpBottleCount = 0;
-
+    DataPlayer dataPlayer;
+    private void Awake()
+    {
+        dataPlayer = DataPlayer.Instance;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -58,14 +62,14 @@ public class ButtonHeal : MonoBehaviour
 
     void CheckButton()
     {
-        if(_button.name == "Button HP" && (_playerController.Current_playerConfig.MaxHp >= _playerController.Default_playerConfig.MaxHp || totalHpBottleCount == 0))
+        if(_button.name == "Button HP" && (dataPlayer.Health >= dataPlayer.Max_Health || totalHpBottleCount == 0))
         {
-            _playerController.Current_playerConfig.MaxHp = _playerController.Default_playerConfig.MaxHp;
+            dataPlayer.Health = dataPlayer.Max_Health;
             _button.interactable = false;
         }
-        else if(_button.name == "Button MP" && (_playerController.Current_playerConfig.MaxMp >= _playerController.Default_playerConfig.MaxMp || totalMpBottleCount == 0))
+        else if(_button.name == "Button MP" && (dataPlayer.Energy >= dataPlayer.Max_Energy || totalMpBottleCount == 0))
         {
-            _playerController.Current_playerConfig.MaxMp = _playerController.Default_playerConfig.MaxMp;
+            dataPlayer.Energy = dataPlayer.Max_Energy;
             _button.interactable = false;
         }
         else
