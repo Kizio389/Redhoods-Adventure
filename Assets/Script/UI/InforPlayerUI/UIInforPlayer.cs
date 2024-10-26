@@ -6,15 +6,18 @@ using UnityEngine.UI;
 
 public class UI_InforPlayer : MonoBehaviour
 {
-    [SerializeField] PlayerConfig default_PlayerConfig;
-    [SerializeField] PlayerConfig current_PlayerConfig;
-
     [SerializeField] TextMeshProUGUI txt_HP;
     [SerializeField] TextMeshProUGUI txt_MP;
     [SerializeField] TextMeshProUGUI txt_Level;
 
     [SerializeField] Image imageEXP;
 
+    DataPlayer dataPlayer;
+
+    private void Awake()
+    {
+        dataPlayer = DataPlayer.Instance;
+    }
 
     private void Update()
     {
@@ -22,15 +25,15 @@ public class UI_InforPlayer : MonoBehaviour
     }
     void UpdateUI()
     {
-        txt_HP.text = current_PlayerConfig.MaxHp.ToString() + "/" + default_PlayerConfig.MaxHp;
-        txt_MP.text = current_PlayerConfig.MaxMp.ToString() + "/" + default_PlayerConfig.MaxMp;
-        txt_Level.text = default_PlayerConfig.Level.ToString();
-        if(current_PlayerConfig.Exp > 0)
+        txt_HP.text = dataPlayer.Health.ToString() + "/" + dataPlayer.Max_Health;
+        txt_MP.text = dataPlayer.Energy.ToString() + "/" + dataPlayer.Max_Energy;
+        txt_Level.text = dataPlayer.Level.ToString();
+        if(dataPlayer.EXP > 0)
         {
             Debug.Log("Fill");
-            imageEXP.fillAmount = (float)current_PlayerConfig.Exp / default_PlayerConfig.MaxExp;
+            imageEXP.fillAmount = (float)dataPlayer.EXP / dataPlayer.Max_EXP;
         }
-        else if(current_PlayerConfig.Exp <= 0)
+        else if(dataPlayer.EXP <= 0)
         {
             Debug.Log("Not fill");
             imageEXP.fillAmount = 0;

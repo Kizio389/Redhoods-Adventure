@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class SplatSceneController : MonoBehaviour
 {
     [SerializeField] SceneConfig sceneConfig;
-    [SerializeField] ScriptableObject[] SO;
 
     [SerializeField] GameObject Player;
     Vector3 PosPlayer;
@@ -14,15 +13,6 @@ public class SplatSceneController : MonoBehaviour
     private void Awake()
     {
         PosPlayer = Player.transform.localPosition;
-    }
-
-    private void Start()
-    {
-        foreach (ScriptableObject so in SO)
-        {
-            continue;
-        }
-
     }
     private void Update()
     {

@@ -12,14 +12,12 @@ public class ButtonController : MonoBehaviour
     [SerializeField] private Button button_Pause;
 
     [SerializeField] SceneConfig sceneConfig;
-    [SerializeField] PlayerConfig Def_playerConfig;
-    [SerializeField] PlayerConfig Cur_playerConfig;
-    [SerializeField] InventoryEquipmentSO inventoryEquipmentSO;
-    [SerializeField] InventorySO inventorySO;
+    DataPlayer dataPlayer;
 
-    [Header("")]
-    [SerializeField] ChestSO[] Chest;
-
+    private void Awake()
+    {
+        dataPlayer = DataPlayer.Instance;
+    }
     //Skip
     public void SkipButton()
     {
@@ -29,22 +27,10 @@ public class ButtonController : MonoBehaviour
     //Main Menu
     void ResetAllData()
     {
+        dataPlayer.ResetData();
         sceneConfig.ResetToDefault();
-        Def_playerConfig.ResetToDefault();
-        Cur_playerConfig.ResetToDefault();
-        Cur_playerConfig.MaxExp = 0;
-        inventoryEquipmentSO.ResetData();
-        inventorySO.Initialize();
-        ResetChest();
     }
 
-    void ResetChest()
-    {
-        foreach(ChestSO chestSO in Chest)
-        {
-            chestSO.ResetChest();
-        }
-    }
     public void NewGame()
     {
         ResetAllData();

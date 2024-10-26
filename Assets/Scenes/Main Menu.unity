@@ -24203,6 +24203,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ff009a284d97b3e40ba600c16c110b40, type: 2}
     - target: {fileID: 3404179193594346009, guid: 06453dded25fe1541b49d2214f0cc4d1, type: 3}
+      propertyPath: sceneConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 9ae32d5e7e7736647be96c4195e79e0c, type: 2}
+    - target: {fileID: 3404179193594346009, guid: 06453dded25fe1541b49d2214f0cc4d1, type: 3}
       propertyPath: Chest.Array.size
       value: 6
       objectReference: {fileID: 0}

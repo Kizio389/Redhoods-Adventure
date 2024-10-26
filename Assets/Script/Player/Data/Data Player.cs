@@ -24,7 +24,7 @@ public class DataPlayer
     {
         Max_Health = 100f;
         Health = 100f;
-        Max_Energy = 100f;
+        Max_Energy = 50f;
         Energy = 50f;
         Coin = 0;
         Gem = 0;
@@ -47,5 +47,22 @@ public class DataPlayer
             }
             return Data;
         }
+    }
+
+    public void ResetData()
+    {
+        Max_Health = 100f;
+        Health = Max_Health;
+        Max_Energy = 50f;
+        Energy = Max_Energy;
+        Coin = 0;
+        Gem = 0;
+        Armor = 0;
+        AD_Damage = 10.0f;
+        AP_Damage = 5.0f;
+        Level = 1;
+        Max_EXP = 300;
+        EXP = 0;
+        SkillPoint = 0;
     }
 }

@@ -152,12 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e430753acb32214ea9a7a92b675755d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneConfig: {fileID: 11400000, guid: f12955cca1a9517478e2ff0604a3039e, type: 2}
-  SO:
-  - {fileID: 11400000, guid: 9e3a5ebd70a75264cb3e2bde0b73b332, type: 2}
-  - {fileID: 11400000, guid: b82b9bbafc193ba4e9c7657fd760a141, type: 2}
-  - {fileID: 11400000, guid: 75a8fb184fd898e42b12feaab63f93e0, type: 2}
-  - {fileID: 11400000, guid: d11334f6da420424289e87b7f566b8fc, type: 2}
+  sceneConfig: {fileID: 11400000, guid: 9ae32d5e7e7736647be96c4195e79e0c, type: 2}
   Player: {fileID: 1764066418}
 --- !u!4 &1104458444
 Transform:
