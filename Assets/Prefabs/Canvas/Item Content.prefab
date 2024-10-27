@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3226415565437697063}
   - component: {fileID: 488867242835253972}
   - component: {fileID: 6297611863871493904}
+  - component: {fileID: 4437436989167214720}
   m_Layer: 5
   m_Name: Item Content
   m_TagString: Untagged
@@ -92,8 +93,21 @@ MonoBehaviour:
   ID_item: MP
   empty: 0
   item: {fileID: 6029698652766891809}
-  amount: 0
+  amount: 1
   amount_text: {fileID: 7133265809510481595}
+  stack_Able: 1
+--- !u!114 &4437436989167214720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3588633164627389192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aaffa31690a225488fae66f602c9f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5161782865908710225
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

@@ -76,15 +76,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1235301873, guid: eed429aecb0992146bf2de37da471671, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.4, y: 0.51666665}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!82 &5374278867408389568
@@ -195,8 +195,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62eda2cff6f71740b3f2a45e1479330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <InventoryItem>k__BackingField: {fileID: 11400000, guid: 2e68241eeb1e5e741b87fb5643b0768f, type: 2}
-  <Quantity>k__BackingField: 99
+  imageItem: {fileID: 0}
+  stack_able: 1
+  NameItem: 
+  Description: '- Can use
+
+    - Restore 10 health'
   audioSource: {fileID: 5374278867408389568}
   duration: 0.3
 --- !u!58 &2383341572478906223

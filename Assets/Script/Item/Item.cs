@@ -2,16 +2,17 @@ using Inventory.Model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
-    [field:SerializeField]
-    public ItemSO InventoryItem { get;private set; }
-
-    [field: SerializeField]
-    public int Quantity { get; set; } = 1;
-
+    public Sprite imageItem;
+    public bool stack_able;
+    public string NameItem;
+    [TextArea (0,10)]
+    public string Description;
     [SerializeField]
     private AudioSource audioSource;
 
@@ -20,7 +21,8 @@ public class Item : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = InventoryItem.ItemImage;
+       imageItem = GetComponent<SpriteRenderer>().sprite;
+       NameItem = gameObject.name;
     }
 
     public void DestroyItem()
