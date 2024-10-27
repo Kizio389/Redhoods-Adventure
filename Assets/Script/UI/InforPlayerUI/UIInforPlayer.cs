@@ -30,12 +30,12 @@ public class UI_InforPlayer : MonoBehaviour
         txt_Level.text = dataPlayer.Level.ToString();
         if(dataPlayer.EXP > 0)
         {
-            Debug.Log("Fill");
+            //Debug.Log("Fill");
             imageEXP.fillAmount = (float)dataPlayer.EXP / dataPlayer.Max_EXP;
         }
         else if(dataPlayer.EXP <= 0)
         {
-            Debug.Log("Not fill");
+            //Debug.Log("Not fill");
             imageEXP.fillAmount = 0;
         }
     }

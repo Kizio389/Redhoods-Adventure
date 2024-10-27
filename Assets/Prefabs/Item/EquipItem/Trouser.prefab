@@ -196,8 +196,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageItem: {fileID: 0}
-  stack_able: 0
   NameItem: 
+  stack_able: 0
+  amountRestoreHP: 0
+  amountRestoreMP: 0
+  Armor: 0
+  MaxHealth: 0
+  MaxEnergy: 0
+  ADDamege: 5
+  APDamege: 0
+  ConditionLevel: 2
+  Description: 
   audioSource: {fileID: 5988333342462323319}
   duration: 0.3
 --- !u!58 &1703104201143516974

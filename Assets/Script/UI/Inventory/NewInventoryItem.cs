@@ -16,6 +16,7 @@ public class NewInventoryItem : MonoBehaviour,
     public void OnPointerClick(PointerEventData eventData)
     {
         inventoryContent = GetComponentInParent<UIInventoryContent>();
+        inventoryContent.isObject = gameObject;
         inventoryContent.ShowDescription(gameObject.GetComponent<ItemInfor>());
     }
 }

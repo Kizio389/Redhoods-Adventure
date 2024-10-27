@@ -34,7 +34,7 @@ public class DataPlayer
         Level = 1;
         Max_EXP = 300;
         EXP = 0;
-        SkillPoint = 0;
+        SkillPoint = 10;
     }
 
     public static DataPlayer Instance

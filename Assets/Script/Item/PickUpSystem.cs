@@ -12,7 +12,7 @@ public class PickUpSystem : MonoBehaviour
         Item item = collision.GetComponent<Item>();
         if(item != null)
         {
-            inventoryData.AddItem(item.imageItem, item.name, item.Description, item.stack_able);
+            inventoryData.AddItem(item);
             item.DestroyItem();
         }
     }

@@ -309,7 +309,7 @@ TextureImporter:
         serializedVersion: 2
         x: 161
         y: 35
-        width: 34
+        width: 30
         height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -513,6 +513,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: armor_4x_18
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 226
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e31931d57e58cf7439c713221633dab9
+      internalID: 1776220199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -534,6 +555,7 @@ TextureImporter:
       armor_4x_15: -498900468
       armor_4x_16: -1929960566
       armor_4x_17: -1627547058
+      armor_4x_18: 1776220199
       armor_4x_2: 1668735461
       armor_4x_3: 709584839
       armor_4x_4: -1422951137

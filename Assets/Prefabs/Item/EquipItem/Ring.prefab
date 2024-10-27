@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1201105407, guid: 193df14742824c64fb6a1a8c341ff8bd, type: 3}
+  m_Sprite: {fileID: 1177375120, guid: 193df14742824c64fb6a1a8c341ff8bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -196,8 +196,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageItem: {fileID: 0}
-  stack_able: 0
   NameItem: 
+  stack_able: 0
+  amountRestoreHP: 0
+  amountRestoreMP: 0
+  Armor: 0
+  MaxHealth: 0
+  MaxEnergy: 10
+  ADDamege: 0
+  APDamege: 10
+  ConditionLevel: 2
   Description: '- Can equip
 
     + 10 AP damge'

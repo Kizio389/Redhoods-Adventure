@@ -196,8 +196,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageItem: {fileID: 0}
-  stack_able: 1
   NameItem: 
+  stack_able: 1
+  amountRestoreHP: 0
+  amountRestoreMP: 10
+  Armor: 0
+  MaxHealth: 0
+  MaxEnergy: 0
+  ADDamege: 0
+  APDamege: 0
+  ConditionLevel: 0
   Description: '- Can use
 
     - Restore 10 energy'

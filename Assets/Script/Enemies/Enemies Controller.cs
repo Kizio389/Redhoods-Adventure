@@ -162,15 +162,15 @@ public class EnemiesController : MonoBehaviour
 
     public void FlipAnimals()
     {
-        Debug.Log(_isRight);
+        //Debug.Log(_isRight);
         if (gameObject.transform.localPosition.x >= limitMoveLeft && _isRight == true)
         {
-            Debug.Log("TurnRight");
+            //Debug.Log("TurnRight");
             Flip(ref _isRight);
         }
         else if(gameObject.transform.localPosition.x <= limitMoveRight && _isRight == false)
         {
-            Debug.Log("TurnLeft");
+            //Debug.Log("TurnLeft");
             Flip(ref _isRight);
         }
         Collider2D[] collider2d = Physics2D.OverlapCircleAll(Point_wall.position, Radius_check_wall, Ground);
@@ -186,7 +186,7 @@ public class EnemiesController : MonoBehaviour
     public void Flip(ref bool _IsRight)
     {
         _IsRight = !_IsRight;
-        Debug.Log(_IsRight);
+        //Debug.Log(_IsRight);
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;

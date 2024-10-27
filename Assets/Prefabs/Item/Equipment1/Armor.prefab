@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 965701404, guid: 193df14742824c64fb6a1a8c341ff8bd, type: 3}
+  m_Sprite: {fileID: 1614443892, guid: 193df14742824c64fb6a1a8c341ff8bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -200,12 +200,12 @@ MonoBehaviour:
   stack_able: 0
   amountRestoreHP: 0
   amountRestoreMP: 0
-  Armor: 10
-  MaxHealth: 20
+  Armor: 25
+  MaxHealth: 35
   MaxEnergy: 0
   ADDamege: 0
   APDamege: 0
-  ConditionLevel: 2
+  ConditionLevel: 5
   Description: '- Can equip
 
     + 100 armor'

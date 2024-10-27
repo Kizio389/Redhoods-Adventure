@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2064839051, guid: 193df14742824c64fb6a1a8c341ff8bd, type: 3}
+  m_Sprite: {fileID: -2121778048, guid: 193df14742824c64fb6a1a8c341ff8bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -196,8 +196,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageItem: {fileID: 0}
-  stack_able: 0
   NameItem: 
+  stack_able: 0
+  amountRestoreHP: 0
+  amountRestoreMP: 0
+  Armor: 5
+  MaxHealth: 5
+  MaxEnergy: 0
+  ADDamege: 0
+  APDamege: 0
+  ConditionLevel: 1
+  Description: 
   audioSource: {fileID: 5988333342462323319}
   duration: 0.3
 --- !u!58 &1703104201143516974

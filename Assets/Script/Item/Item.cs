@@ -8,11 +8,25 @@ using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
+    [Header("UI Item")]
     public Sprite imageItem;
-    public bool stack_able;
     public string NameItem;
+    public bool stack_able;
+
+    [Header("Type Restore")]
+    public float amountRestoreHP;
+    public float amountRestoreMP;
+    [Header("Equipment")]
+    public int Armor;
+    public float MaxHealth;
+    public float MaxEnergy;
+    public float ADDamege;
+    public float APDamege;
+    public int ConditionLevel;
+
     [TextArea (0,10)]
     public string Description;
+
     [SerializeField]
     private AudioSource audioSource;
 
